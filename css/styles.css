@@ -66,3 +66,5 @@
 .faq-list summary{cursor:pointer;font-weight:800;padding:17px 0;min-height:44px}
 .faq-list p{color:var(--muted);line-height:1.65;margin:0 0 18px}
 @media(max-width:620px){.faq-list details{padding-inline:15px}.service-link{width:100%}.footer-inner{gap:16px}}
+
+.analytics-consent[hidden],.privacy-settings[hidden]{display:none!important}.analytics-consent{position:fixed;z-index:50;bottom:calc(12px + env(safe-area-inset-bottom,0px));left:12px;width:min(440px,calc(100% - 24px));max-height:85vh;overflow:auto;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 12px 40px #142a3230}.analytics-consent p{font-size:.85rem;line-height:1.55;margin:8px 0}.analytics-consent a{text-decoration:underline}.consent-actions{display:flex;gap:8px;flex-wrap:wrap}.consent-actions .btn{flex:1 1 130px;padding:10px;border:1px solid var(--ink)}.privacy-settings{background:none;border:0;color:inherit;text-decoration:underline;min-height:44px;padding:0;font-size:inherit}

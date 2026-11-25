@@ -21,6 +21,7 @@
     ];
     const url='https://wa.me/'+PHONE+'?text='+encodeURIComponent(lines.join('\n'));
     document.querySelector('#quote-status').textContent='Abrindo o WhatsApp para você revisar e enviar a mensagem.';
+    vitalEvent('quote_whatsapp_open',{equipment:get('equipment')});
     window.location.assign(url);
   });
  
@@ -32,10 +33,11 @@ document.addEventListener('click', e => {
   const link = e.target.closest('a');
   if (!link) return;
   const href = link.getAttribute('href') || '';
-  const section = link.closest('section')?.id || (link.closest('footer') ? 'footer' : link.classList.contains('float-wa') ? 'floating' : 'header');
-  if (href.startsWith('https://wa.me/')) vitalEvent('whatsapp_click',{section});
-  else if (href.startsWith('tel:')) vitalEvent('phone_click',{section});
-  else if (href.startsWith('https://www.google.com/maps/')) vitalEvent('map_click',{section});
+  const section = link.closest('section');
+  const source = link.classList.contains('float-wa') ? 'floating' : link.closest('footer') ? 'footer' : section?.id || (section?.classList.contains('cta') ? 'cta' : 'header');
+  if (href.startsWith('https://wa.me/')) vitalEvent('whatsapp_click',{section:source});
+  else if (href.startsWith('tel:')) vitalEvent('phone_click',{section:source});
+  else if (href.startsWith('https://www.google.com/maps/')) vitalEvent('map_click',{section:source});
   else if (link.dataset.equipment) vitalEvent('equipment_select',{equipment:link.dataset.equipment});
 });
-form.addEventListener('submit', () => vitalEvent('quote_whatsapp_open'));
+vitalEvent('page_view');

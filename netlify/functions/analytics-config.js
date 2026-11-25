@@ -1,0 +1,1 @@
+exports.handler=async()=>{const token=process.env.VITAL_POSTHOG_PROJECT_TOKEN;const host=process.env.VITAL_POSTHOG_HOST;return {statusCode:200,headers:{'Content-Type':'application/json','Cache-Control':'no-store'},body:JSON.stringify(token&&host==='https://us.i.posthog.com'?{token,host}:{enabled:false})}};
